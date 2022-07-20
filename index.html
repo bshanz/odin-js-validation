@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Form Validation</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <form novalidate action="#" method="post" id="form">
+        <div class="form-content">
+          <div id="email-container" class="holder">
+            <input
+              type="email"
+              placeholder="Email"
+              id="email"
+              name="email"
+              minlength="1"
+              maxlength="50"
+              required
+            />
+            <span id="email-error" class="error"></span>
+          </div>
+          <div class="holder">
+            <input
+              type="text"
+              placeholder="Country"
+              id="country"
+              name="country"
+              minlength="3"
+              maxlength="20"
+              required
+            />
+            <span id="country-error" class="error"></span>
+          </div>
+          <div class="holder">
+            <input
+              type="text"
+              placeholder="Zip code"
+              id="zip"
+              name="zip"
+              pattern="[0-9]+"
+              required
+            />
+            <span id="zip-error" class="error"></span>
+          </div>
+          <div class="holder">
+            <input
+              type="password"
+              placeholder="Password"
+              id="password"
+              name="password"
+              pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+              required
+            />
+            <span id="password-error" class="error"></span>
+          </div>
+          <div class="holder">
+            <input
+              type="password"
+              placeholder="Repeat password"
+              id="password2"
+              name="password2"
+              pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+              required
+            />
+            <span id="password2-error" class="error"></span>
+          </div>
+        </div>
+      </form>
+      <button form="form" id="submitForm" type="submit" class="submit">
+        Submit
+      </button>
+    </div>
+  </body>
+</html>
