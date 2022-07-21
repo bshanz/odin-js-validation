@@ -14,6 +14,7 @@ const passwordError = document.getElementById("password-error");
 const password2 = document.getElementById("password2");
 const password2Error = document.getElementById("password2-error");
 
+// validate the email input
 email.addEventListener("input", function (event) {
   // Each time the user types something, we check if the
   // form fields are valid.
@@ -29,6 +30,7 @@ email.addEventListener("input", function (event) {
   }
 });
 
+// validate the country input
 country.addEventListener("input", function (event) {
   // Each time the user types something, we check if the
   // form fields are valid.
@@ -44,6 +46,7 @@ country.addEventListener("input", function (event) {
   }
 });
 
+// validate the zip code input
 zip.addEventListener("input", function (event) {
   // Each time the user types something, we check if the
   // form fields are valid.
@@ -59,6 +62,7 @@ zip.addEventListener("input", function (event) {
   }
 });
 
+// validate the password input
 password.addEventListener("input", function (event) {
   // Each time the user types something, we check if the
   // form fields are valid.
@@ -74,6 +78,7 @@ password.addEventListener("input", function (event) {
   }
 });
 
+// validate repeat password input
 password2.addEventListener("input", function (event) {
   // Each time the user types something, we check if the
   // form fields are valid.
@@ -93,30 +98,28 @@ password2.addEventListener("input", function (event) {
   }
 });
 
-//fix this
+//prevent the form from submitting if any of the fields are not valid
 form.addEventListener("submit", function (event) {
-  // if the email field is valid, we let the form submit
-
   if (!email.validity.valid) {
-    // If it isn't, we display an appropriate error message
+    // If the email isn't valid, we display an appropriate error message
     showEmailError();
     // Then we prevent the form from being sent by canceling the event
     event.preventDefault();
-  } else if (!country.validity.valid){
-      showCountryError();
-      event.preventDefault();
-  } else if (!zip.validity.valid){
+  } else if (!country.validity.valid) {
+    showCountryError();
+    event.preventDefault();
+  } else if (!zip.validity.valid) {
     showZipError();
     event.preventDefault();
-} else if (!password.validity.valid){
+  } else if (!password.validity.valid) {
     showPasswordError();
     event.preventDefault();
-} else if (!password2.validity.valid){
+  } else if (!password2.validity.valid) {
     showPassword2Error();
     event.preventDefault();
-} else{
-    alert("Done! High-five!")
-}
+  } else {
+    alert("Done! High-five!");
+  }
 });
 
 function showEmailError() {
@@ -144,7 +147,7 @@ function showCountryError() {
     // display the following error message.
     countryError.textContent = "You need to enter a country.";
   } else if (country.validity.typeMismatch) {
-    // If the field doesn't contain an email address,
+    // If the field doesn't contain a country,
     // display the following error message.
     countryError.textContent = "Entered value needs to be an e-mail address.";
   } else if (country.validity.tooShort) {
@@ -152,7 +155,7 @@ function showCountryError() {
     // display the following error message.
     countryError.textContent = `Country should be at least ${country.minLength} characters; you entered ${country.value.length}.`;
   } else if (country.validity.tooLong) {
-    // If the data is too short,
+    // If the data is too long,
     // display the following error message.
     countryError.textContent = `Country should less than ${country.maxLength} characters; you entered ${country.value.length}.`;
   }
@@ -166,22 +169,18 @@ function showZipError() {
     // If the field is empty,
     // display the following error message.
     zipError.textContent = "You need to enter a zip code.";
-    console.log("first error");
   } else if (zip.validity.patternMismatch) {
-    // If the field doesn't contain an email address,
+    // If the field doesn't contain a zip code,
     // display the following error message.
     zipError.textContent = "Entered value needs to be a number.";
-    console.log("patter error");
   } else if (zip.validity.tooShort) {
     // If the data is too short,
     // display the following error message.
     zipError.textContent = `Zip code should be at least ${zip.minLength} characters; you entered ${zip.value.length}.`;
-    console.log("too short");
   } else if (zip.validity.tooLong) {
-    // If the data is too short,
+    // If the data is too long,
     // display the following error message.
     zipError.textContent = `Zip code should less than ${zip.maxLength} characters; you entered ${zip.value.length}.`;
-    console.log("too long");
   }
 
   // Set the styling appropriately
@@ -194,7 +193,7 @@ function showPasswordError() {
     // display the following error message.
     passwordError.textContent = "You need to enter a password.";
   } else if (password.validity.patternMismatch) {
-    // If the field doesn't contain an email address,
+    // If the field doesn't contain a password,
     // display the following error message.
     passwordError.textContent =
       "The password must contain minimum eight characters, at least one number, and one special character.";
@@ -210,7 +209,7 @@ function showPassword2Error() {
     // display the following error message.
     password2Error.textContent = "You need to enter a password.";
   } else if (password2.validity.patternMismatch) {
-    // If the field doesn't contain an email address,
+    // If the field doesn't contain a password,
     // display the following error message.
     password2Error.textContent =
       "The password must contain minimum eight characters, at least one number, and one special character.";
